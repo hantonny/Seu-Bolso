@@ -29,7 +29,7 @@ class HomeController extends Controller
         $array = array('lista'=>$lista);
         $usuarios = User::All();
         $array2 = array('user'=>$usuarios);
-        return view('home', $array, $array2);  
+        return view('home', $array, $array2);
     }
 
     public function adicionar(Request $request){
@@ -54,7 +54,7 @@ class HomeController extends Controller
             $lista->save();
             return redirect('/home');
         }
-        
+
         return view('adicionar', $array2, $categorias);
     }
     public function deletar($id){
@@ -64,7 +64,7 @@ class HomeController extends Controller
     public function alterar($id,Request $request){
         $categoria = Categoria::All();
         $categorias = array('categoria'=> $categoria);
-        if($request->has('tipo')){  
+        if($request->has('tipo')){
             $transacao = Transacao::find($id);
             $transacao->tipo = $request->input('tipo');
             $transacao->valor = $request->input('valor');
@@ -85,7 +85,7 @@ class HomeController extends Controller
         $array2 = array('usuarios'=>$usuarios);
         $categoria = Categoria::All();
         $categorias = array('categoria'=>$categoria);
- 
+
     return \PDF::loadView('gerarpdf', compact('lista', 'usuarios'))->stream();
     }
     public function graficoGerar(){
@@ -95,8 +95,8 @@ class HomeController extends Controller
         $array2 = array('user'=>$usuarios);
         $categoria = Categoria::All();
         $categorias = array('categoria'=>$categoria);
-        return view('grafico', compact('lista', 'usuarios', 'categoria')); 
-        
+        return view('grafico', compact('lista', 'usuarios', 'categoria'));
+
     }
 }
 
